@@ -1,4 +1,3 @@
-import e from "express";
 import express from "express";
 import AsyncHandler from "express-async-handler";
 
@@ -13,6 +12,7 @@ router.get(
   "/",
   AsyncHandler(async (req, res) => {
     const product = await Product.find({});
+
     res.json(product);
   })
 );
