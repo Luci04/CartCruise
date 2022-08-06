@@ -28,7 +28,7 @@ const authUser = AsyncHandler(async (req, res) => {
 //@route get /api/users/profile
 //@access Private
 
-const getuserProfile = AsyncHandler(async (req, res) => {
+const getUserProfile = AsyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (user) {
@@ -75,8 +75,37 @@ const registerUser = AsyncHandler(async (req, res) => {
       res.status(400).send({ message: "Invalid User Data" });
     }
   } catch (error) {
-    res.send({ message: error.message });
+    res.status(401).send({ message: error.message });
   }
 });
 
-export { authUser, getuserProfile, registerUser };
+//@desc Update user Profile
+//@route PUT /api/users/profile
+//@access Private
+
+const updateUserProfile = AsyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      token: generateToken(updatedUser._id),
+    });
+  } else {
+    res.status(404).send({ message: "User Not Found" });
+  }
+});
+
+export { authUser, getUserProfile, registerUser, updateUserProfile };
