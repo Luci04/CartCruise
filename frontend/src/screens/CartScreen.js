@@ -46,7 +46,7 @@ const CartScreen = () => {
         {cartItems.length === 0 ? (
           <Message variant="info ">
             Your Card is Empty!
-            <Link to="/">Go Back</Link>
+            <Link to="/">Main Screen</Link>
           </Message>
         ) : (
           <ListGroup varient="flush">
@@ -59,7 +59,7 @@ const CartScreen = () => {
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>₹{item.price * 70}</Col>
+                  <Col md={2}>₹{item.price}</Col>
                   <Col md={2}>
                     <Form.Control
                       as="select"
@@ -103,7 +103,7 @@ const CartScreen = () => {
               </h2>
               ₹
               {cartItems
-                .reduce((acc, item) => acc + item.price * item.qty * 70, 0)
+                .reduce((acc, item) => acc + item.price * item.qty, 0)
                 .toFixed(2)}
             </ListGroupItem>
             <ListGroupItem>

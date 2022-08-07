@@ -23,9 +23,7 @@ const Product = ({ product }) => {
           />
         </Card.Text>
 
-        <Card.Text as="h3">
-          ₹{parseFloat(product.price * 70).toFixed(2)}
-        </Card.Text>
+        <Card.Text as="h3">₹{parseFloat(product.price).toFixed(2)}</Card.Text>
       </Card.Body>
     </Card>
   );
