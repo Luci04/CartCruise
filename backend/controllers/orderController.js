@@ -86,8 +86,6 @@ const updateOrdertoPaid = AsyncHandler(async (req, res) => {
 //@access Private
 
 const getMyOrders = AsyncHandler(async (req, res) => {
-  console.log("Avinash");
-  console.log(req.user._id);
   const orders = await Order.find({ user: req.user._id });
   res.json(orders);
 });
