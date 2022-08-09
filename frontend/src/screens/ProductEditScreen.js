@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Form, Button, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
@@ -23,7 +23,6 @@ const ProductEditSceen = () => {
 
   // const [isAdmin, setIsAdmin] = useState(false);
 
-  const location = useLocation();
   const Dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,7 +34,7 @@ const ProductEditSceen = () => {
     loading: loadingUpdate,
     error: errorUpdate,
     success: successUpdate,
-  } = updateProduct;
+  } = productUpdate;
 
   useEffect(() => {
     if (successUpdate) {
