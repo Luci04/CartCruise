@@ -1,6 +1,7 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
@@ -18,6 +19,7 @@ const ProductEditSceen = () => {
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState(0);
+  const [uploading, setUploading] = useState(false);
 
   // const [isAdmin, setIsAdmin] = useState(false);
 
@@ -71,6 +73,29 @@ const ProductEditSceen = () => {
     navigate("/admin/productlist");
   };
 
+  const uploadfileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        header: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post("/api/upload", formData, config);
+
+      setImage(data);
+      setUploading(false);
+    } catch (err) {
+      console.log(err);
+      setUploading(false);
+    }
+  };
+
   return (
     <>
       <Link to="/admin/productlist" className="'btn btn-light my-3">
@@ -107,12 +132,19 @@ const ProductEditSceen = () => {
 
             <Form.Group controlId="image">
               <Form.Label>Image</Form.Label>
-              <Form.Control
-                type="text"
-                value={image}
-                placeholder="Enter Image Url"
-                onChange={(e) => setImage(e.target.value)}
-              ></Form.Control>
+              <Row>
+                <Form.Control
+                  type="text"
+                  value={image}
+                  placeholder="Enter Image Url"
+                  onChange={(e) => setImage(e.target.value)}
+                ></Form.Control>
+                <Form.Group controlId="image-file" className="mb-3">
+                  <Form.Label>Choose File</Form.Label>
+                  <Form.Control type="file" onChange={uploadfileHandler} />
+                </Form.Group>
+              </Row>
+              {uploading && <Loader />}
             </Form.Group>
 
             <Form.Group controlId="barnd">
