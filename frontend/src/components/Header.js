@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { logout } from "../actions/userAction";
+import { CART_RESET } from "../constants/cartConstants";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const Header = () => {
 
   const logoutHandler = () => {
     dispatch(logout());
+    dispatch({ type: CART_RESET });
   };
 
   return (

@@ -7,11 +7,12 @@ import {
   getMyOrders,
   getOrderById,
   updateOrdertoPaid,
+  getOrders,
 } from "../controllers/orderController.js";
 
-import { protect } from "../middleware/authMiddleware.js";
+import { admin, protect } from "../middleware/authMiddleware.js";
 
-router.route("/").post(protect, addOrderItems);
+router.route("/").post(protect, addOrderItems).get(protect, admin, getOrders);
 
 router.route("/myorders").get(protect, getMyOrders);
 

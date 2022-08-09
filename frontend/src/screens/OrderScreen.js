@@ -32,7 +32,7 @@ const OrderScreen = () => {
 
   const orderPay = useSelector((state) => state.orderPay);
 
-  const { loading: loadingPay, success: successPay } = orderDetails;
+  const { loading: loadingPay, success: successPay } = orderPay;
 
   //Price Calculate
 
@@ -62,7 +62,7 @@ const OrderScreen = () => {
       document.body.appendChild(script);
     };
 
-    if (!order || successPay) {
+    if (!order || successPay || order._id !== orderId) {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
@@ -72,7 +72,7 @@ const OrderScreen = () => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, orderId, successPay, order]);
+  }, [dispatch, payOrder, orderId, successPay, loadingPay, order]);
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
@@ -119,7 +119,7 @@ const OrderScreen = () => {
                 {order.paymentMethod}
               </p>
               {order.isPaid ? (
-                <Message variant="Success">Paid on {order.paidAt}</Message>
+                <Message variant="success">Paid on {order.paidAt}</Message>
               ) : (
                 <Message variant="danger">Not Paid</Message>
               )}
