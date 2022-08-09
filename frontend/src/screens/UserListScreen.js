@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listUsers } from "../actions/userAction";
+import { listUsers, deleteUser } from "../actions/userAction";
 
 const UserListScreen = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,14 @@ const UserListScreen = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const deletehandler = () => {};
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success: successDelete } = userDelete;
+
+  const deletehandler = (id) => {
+    if (window.confirm("Are you Sure")) {
+      dispatch(deleteUser(id));
+    }
+  };
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin === "true") {
@@ -26,7 +33,7 @@ const UserListScreen = () => {
       navigate("/login");
     }
     dispatch(listUsers());
-  }, [dispatch, navigate]);
+  }, [dispatch, navigate, successDelete, userInfo]);
 
   return (
     <>
@@ -62,20 +69,20 @@ const UserListScreen = () => {
                   )}
                 </td>
                 <td>
-                  <LinkContainer to={`/user/${user._id}/edit`}>
-                    <>
+                  <>
+                    <LinkContainer to={`/admin/user/${user._id}`}>
                       <Button variant="light" className="btn-sm">
                         <i className="fas fa-edit"></i>
                       </Button>
-                      <Button
-                        variant="danger"
-                        className="btn-sm"
-                        onClick={() => deletehandler(user._id)}
-                      >
-                        <i className="fas fa-trash"></i>
-                      </Button>
-                    </>
-                  </LinkContainer>
+                    </LinkContainer>
+                    <Button
+                      variant="danger"
+                      className="btn-sm"
+                      onClick={() => deletehandler(user._id)}
+                    >
+                      <i className="fas fa-trash"></i>
+                    </Button>
+                  </>
                 </td>
               </tr>
             ))}

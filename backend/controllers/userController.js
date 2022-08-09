@@ -122,4 +122,65 @@ const getUsers = AsyncHandler(async (req, res) => {
   }
 });
 
-export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers };
+//@desc Delete User
+//@route DELETE /api/users/:id
+//@access Private/Admin
+
+const deleteUser = AsyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    await user.remove();
+    res.json({ message: "user Removed" });
+  } else {
+    res.status(404).json({ message: "User Not Found" });
+  }
+});
+
+//@desc Get user by ID
+//@route Get /api/users/id
+//@access Private/Admin
+
+const getUserById = AsyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id).select("-password");
+
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404).send({ message: "Admin Not Found" });
+  }
+});
+
+//@desc Update user
+//@route PUT /api/users/:id
+//@access Private/Admin
+
+const updateUser = AsyncHandler(async (req, res) => {
+  const user = await User.findById(req.body._id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+    });
+  } else {
+    res.status(404).send({ message: "User Not Found" });
+  }
+});
+
+export {
+  authUser,
+  getUserProfile,
+  registerUser,
+  updateUserProfile,
+  getUsers,
+  deleteUser,
+  getUserById,
+  updateUser,
+};
