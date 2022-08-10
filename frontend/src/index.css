@@ -30,3 +30,7 @@ h2 {
   width: 100%;
   display: block;
 }
+
+.text-left {
+  text-align: left !important;
+}

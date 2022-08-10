@@ -8,6 +8,7 @@ import {
   deleteProduct,
   createProduct,
   updateProduct,
+  createProductReview,
 } from "../controllers/productContoller.js";
 
 //@desc Fetch All Product
@@ -15,6 +16,8 @@ import {
 //@access Public
 
 router.route("/").get(getProducts).post(protect, admin, createProduct);
+
+router.route("/:id/reviews").post(protect, createProductReview);
 
 //@desc Fetch Single Product
 //@route GET /api/product/:id
