@@ -1,5 +1,6 @@
 import path from "path";
 import express, { application } from "express";
+import mongoose from "mongoose";
 import dotenv from "dotenv";
 import colors from "colors";
 import connectDB from "./config/db.js";
@@ -16,13 +17,13 @@ connectDB();
 
 const app = express();
 
-if (process.env.NODE_ENV === "Development") {
-  app.use(morgan("dev"));
-}
+
+// if (process.env.NODE_ENV === "Development") {
+//   app.use(morgan("dev"));
+// }
 
 const __dirname = path.resolve();
 
-console.log(process.env.NODE_ENV);
 
 app.use(express.json());
 
