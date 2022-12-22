@@ -42,17 +42,17 @@ app.get("/api/config/paypal", (req, res) =>
 
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
-if (process.env.NODE_ENV === "PRODUCTION") {
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
+// if (process.env.NODE_ENV === "PRODUCTION") {
+//   app.use(express.static(path.join(__dirname, "/frontend/build")));
 
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-  );
-} else {
-  app.get("/", (req, res) => {
-    res.send("Api is Running...");
-  });
-}
+//   app.get("*", (req, res) =>
+//     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+//   );
+// } else {
+app.get("/", (req, res) => {
+  res.send("Api is Running...");
+});
+// }
 
 const PORT = process.env.PORT || 5000;
 
