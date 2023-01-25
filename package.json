@@ -1,5 +1,5 @@
 {
-  "name": "amazon-clone",
+  "name": "cart-cruise",
   "version": "1.0.0",
   "description": "Ecommerce MERN",
   "main": "server.js",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Luci04/Amazon-Clone.git"
+    "url": "git+https://github.com/Luci04/CartCruise.git"
   },
   "author": "Avinash Shukla",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Luci04/Amazon-Clone/issues"
+    "url": "https://github.com/Luci04/CartCruise/issues"
   },
-  "homepage": "https://github.com/Luci04/Amazon-Clone#readme",
+  "homepage": "https://github.com/Luci04/CartCruise#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
