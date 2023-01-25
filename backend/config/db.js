@@ -5,9 +5,6 @@ const connectDB = async () => {
 
   try {
 
-    const DBname = process.env.DB_NAME;
-    const DBpassword = process.env.DB_PASSWORD;
-
     mongoose.set('strictQuery', true);
 
     await mongoose.connect(

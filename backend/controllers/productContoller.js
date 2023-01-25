@@ -2,17 +2,18 @@ import AsyncHandler from "express-async-handler";
 import Product from "../models/productModel.js";
 
 //@desc Fetch All Product
-//@route GET /api/product
+//@route GET http://localhost:5000/api/product
 //@access Public
 
 const getProducts = AsyncHandler(async (req, res) => {
   const product = await Product.find({});
 
+  console.log(product)
   res.json(product);
 });
 
 //@desc Fetch Single Product
-//@route GET /api/product/:id
+//@route GET http://localhost:5000/api/product/:id
 //@access Public
 
 const getProductById = AsyncHandler(async (req, res) => {
@@ -27,7 +28,7 @@ const getProductById = AsyncHandler(async (req, res) => {
 });
 
 //@desc Delete a Product
-//@route GET /api/products/:id
+//@route GET http://localhost:5000/api/products/:id
 //@access Private/Admin
 
 const deleteProduct = AsyncHandler(async (req, res) => {
@@ -43,7 +44,7 @@ const deleteProduct = AsyncHandler(async (req, res) => {
 });
 
 //@desc Create a Product
-//@route POST /api/products
+//@route POST http://localhost:5000/api/products
 //@access Private/Admin
 
 const createProduct = AsyncHandler(async (req, res) => {
@@ -65,7 +66,7 @@ const createProduct = AsyncHandler(async (req, res) => {
 });
 
 //@desc Update a Product
-//@route PUT /api/products/:id
+//@route PUT http://localhost:5000/api/products/:id
 //@access Private/Admin
 
 const updateProduct = AsyncHandler(async (req, res) => {
@@ -100,7 +101,7 @@ const updateProduct = AsyncHandler(async (req, res) => {
 });
 
 //@desc Create New Review
-//@route POST /api/products/:id/reviews
+//@route POST http://localhost:5000/api/products/:id/reviews
 //@access Private
 
 const createProductReview = AsyncHandler(async (req, res) => {

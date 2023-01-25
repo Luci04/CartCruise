@@ -1,5 +1,6 @@
 import path from "path";
 import express, { application } from "express";
+import cors from 'cors';
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import colors from "colors";
@@ -18,8 +19,15 @@ connectDB();
 const app = express();
 
 
+var corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
+
 // if (process.env.NODE_ENV === "Development") {
-//   app.use(morgan("dev"));
+// app.use(morgan("dev"));
 // }
 
 const __dirname = path.resolve();

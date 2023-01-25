@@ -2,7 +2,7 @@ import AsyncHandler from "express-async-handler";
 import Order from "../models/orderModel.js";
 
 //@desc Create New Order
-//@route POST /api/orders
+//@route POST http://localhost:5000/api/orders
 //@access Private
 
 const addOrderItems = AsyncHandler(async (req, res) => {
@@ -37,7 +37,7 @@ const addOrderItems = AsyncHandler(async (req, res) => {
 });
 
 //@desc Get order by ID
-//@route GET /api/orders
+//@route GET http://localhost:5000/api/orders
 //@access Private
 
 const getOrderById = AsyncHandler(async (req, res) => {
@@ -54,7 +54,7 @@ const getOrderById = AsyncHandler(async (req, res) => {
 });
 
 //@desc Update order to paid
-//@route GET /api/orders/:id/pay
+//@route GET http://localhost:5000/api/orders/:id/pay
 //@access Private
 
 const updateOrdertoPaid = AsyncHandler(async (req, res) => {
@@ -82,7 +82,7 @@ const updateOrdertoPaid = AsyncHandler(async (req, res) => {
 });
 
 //@desc Get logged-in user order
-//@route GET /api/orders/myorders
+//@route GET http://localhost:5000/api/orders/myorders
 //@access Private
 
 const getMyOrders = AsyncHandler(async (req, res) => {
@@ -91,7 +91,7 @@ const getMyOrders = AsyncHandler(async (req, res) => {
 });
 
 //@desc Get all orders
-//@route GET /api/orders/
+//@route GET http://localhost:5000/api/orders/
 //@access Private/Admin
 
 const getOrders = AsyncHandler(async (req, res) => {
@@ -100,7 +100,7 @@ const getOrders = AsyncHandler(async (req, res) => {
 });
 
 //@desc Update order to Delivered
-//@route PUT /api/orders/:id/delivered
+//@route PUT http://localhost:5000/api/orders/:id/delivered
 //@access Private/Admin
 
 const updateOrdertoDelivered = AsyncHandler(async (req, res) => {
