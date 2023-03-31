@@ -3,6 +3,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { SideBySideMagnifier } from "react-image-magnifiers";
 import {
   Row,
   Col,
@@ -77,7 +78,14 @@ const ProductScreen = () => {
         <>
           <Row>
             <Col md={6}>
-              <Image src={product.image} alt={product.name} fluid />
+              {/* <Image src={product.image} alt={product.name} fluid /> */}
+              <SideBySideMagnifier
+                imageSrc={product.image}
+                imageAlt={product.name}
+                alwaysInPlace
+              // largeImageSrc="./large-image.jpg" // Optional
+              // mouseActivation={MOUSE_ACTIVATION.DOUBLE_CLICK} // Optional
+              />
             </Col>
             <Col md={3}>
               <ListGroup variant="flush">

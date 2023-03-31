@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/Luci04/CartCruise#readme",
   "dependencies": {
+    "@ricarso/react-image-magnifiers": "^1.9.0",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
