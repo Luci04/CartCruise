@@ -8,6 +8,7 @@ import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import { listProductDetails, updateProduct } from "../actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
+import { BiArrowBack } from 'react-icons/bi'
 
 const ProductEditSceen = () => {
   const { id: productId } = useParams("id");
@@ -97,8 +98,8 @@ const ProductEditSceen = () => {
 
   return (
     <>
-      <Link to="/admin/productlist" className="'btn btn-light my-3">
-        Go Back
+      <Link to="/admin/productlist" className="btn my-3">
+        <BiArrowBack className="go_back_icon" size={20} />
       </Link>
       <FormContainer>
         <h1>Edit Product</h1>

@@ -19,13 +19,14 @@ import UserEditScreen from "./screens/UserEditScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
+import Highlights from "./screens/Highlights";
 
 const App = () => {
   return (
     <Router>
       <Header />
       <main>
-        <Container>
+        <div className="paddings">
           <Routes>
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/order/:id" element={<OrderScreen />} />
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="/shipping" element={<ShippingScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
+            <Route path="/highlight/:id/:index" element={<Highlights />} />
             <Route path="/cart/:id" exact element={<CartScreen />} />
             <Route path="/cart/" element={<CartScreen />} />
             <Route path="/admin/userlist" element={<UserListScreen />} />
@@ -48,7 +50,7 @@ const App = () => {
             <Route path="/admin/productlist" element={<ProductListScreen />} />
             <Route path="/" element={<HomeScreen />} />
           </Routes>
-        </Container>
+        </div>
       </main>
       <Footer />
     </Router>
