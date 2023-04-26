@@ -50,8 +50,8 @@ const UserEditSceen = () => {
 
   return (
     <>
-      <Link to="/admin/userlist" className="'btn btn-light my-3">
-        Go Back
+      <Link to="/admin/userlist" className="btn my-3">
+        <BiArrowBack className="go_back_icon" size={20} />
       </Link>
       <FormContainer>
         <h1>Edit User</h1>

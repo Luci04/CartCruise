@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import Rating from "./Rating";
 
-const Product = ({ product }) => {
+const Product = ({ product, index }) => {
   return (
     <Card className="my-3 p-3 rounded">
-      <Link to={`./product/${product._id}`}>
+      <Link to={`./highlight/${product._id}/${index + 1}`}>
         <Card.Img src={product.image} variant="top"></Card.Img>
       </Link>
       <Card.Body>
@@ -23,7 +23,7 @@ const Product = ({ product }) => {
           />
         </Card.Text>
 
-        <Card.Text as="h3">₹{parseFloat(product.price).toFixed(2)}</Card.Text>
+        <Card.Text as="h3">${parseFloat(product.price).toFixed(2)}</Card.Text>
       </Card.Body>
     </Card>
   );
