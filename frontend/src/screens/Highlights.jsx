@@ -16,6 +16,15 @@ import { BiArrowBack } from "react-icons/bi";
 import Message from "../components/Message";
 import { SideBySideMagnifier } from "react-image-magnifiers";
 import { imgArray } from "../imageArrays";
+import {
+  Col,
+  Form,
+  FormLabel,
+  ListGroup,
+  ListGroupItem,
+  Row,
+} from "react-bootstrap";
+import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -186,6 +195,64 @@ const Highlights = () => {
               </div>
             </div>
           </div>
+          <Row>
+            <Col md={12}>
+              <h2>Reviews</h2>
+              {product.reviews.length === 0 && <Message>No Reviews</Message>}
+              <ListGroup variant="flush">
+                {product.reviews.map((review, index) => (
+                  <ListGroupItem className="text-left" key={index}>
+                    <strong>{review.name}</strong>
+                    <Rating value={review.rating} text="" />
+                    <p>{review.createdAt.substr(0, 10)}</p>
+                    <p>{review.comment}</p>
+                  </ListGroupItem>
+                ))}
+                <ListGroupItem>
+                  <h2>Write a Customer Review</h2>
+                  {errorProductReview && (
+                    <Message variant="danger">{errorProductReview}</Message>
+                  )}
+                  {userInfo ? (
+                    <Form onSubmit={submitHandler}>
+                      <Form.Group controlId="rating">
+                        <FormLabel>Rating</FormLabel>
+                        <Form.Control
+                          as="select"
+                          value={rating}
+                          onChange={(e) => setRating(e.target.value)}
+                        >
+                          <option value="">Select...</option>
+                          <option value="1">1 - Poor</option>
+                          <option value="2">2 - Fair</option>
+                          <option value="3">3 - Good</option>
+                          <option value="4">4 - Very Good</option>
+                          <option value="5">5 - Excellent</option>
+                        </Form.Control>
+                      </Form.Group>
+                      <Form.Group controlId="comment">
+                        <FormLabel>Comment</FormLabel>
+                        <Form.Control
+                          as="textarea"
+                          row="3"
+                          onChange={(e) => setComment(e.target.value)}
+                          value={comment}
+                        ></Form.Control>
+                      </Form.Group>
+                      <Button className="my-3" type="submit" variant="primary">
+                        Submit
+                      </Button>
+                    </Form>
+                  ) : (
+                    <Message>
+                      Please <Link to="/login">LogIn </Link>
+                      To Write a Review
+                    </Message>
+                  )}
+                </ListGroupItem>
+              </ListGroup>
+            </Col>
+          </Row>
         </>
       )}
     </>

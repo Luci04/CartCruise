@@ -20,6 +20,7 @@ import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
 import Highlights from "./screens/Highlights";
+import LikedScreen from './screens/LikedScreen';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <div className="paddings">
           <Routes>
             <Route path="/login" element={<LoginScreen />} />
+            <Route path="/liked" element={<LikedScreen />} />
             <Route path="/order/:id" element={<OrderScreen />} />
             <Route path="/placeorder" element={<PlaceOrderScreen />} />
             <Route path="/payment" element={<PaymentScreen />} />
@@ -38,6 +40,7 @@ const App = () => {
             <Route path="/profile" element={<ProfileScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path="/highlight/:id/:index" element={<Highlights />} />
+            <Route path="liked/highlight/:id/:index" element={<Highlights />} />
             <Route path="/cart/:id" exact element={<CartScreen />} />
             <Route path="/cart/" element={<CartScreen />} />
             <Route path="/admin/userlist" element={<UserListScreen />} />
