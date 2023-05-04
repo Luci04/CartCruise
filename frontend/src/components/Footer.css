@@ -1,10 +1,10 @@
 .footer-wrapper {
-  background-color: #0a0e3c;
+  background: linear-gradient(#6787fd, #3f66f5);
 }
 
 .back_to_top {
   padding: 20px;
-  background-color: #0e1455;
+  background: linear-gradient(#3f66f5, #6787fd);
   text-align: center;
   cursor: pointer;
   color: white;
