@@ -4,12 +4,12 @@ import cors from 'cors';
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import colors from "colors";
-import connectDB from "./config/db.js";
-import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
-import productRoutes from "./routes/productRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
-import orderRoutes from "./routes/orderRoutes.js";
-import uploadRoutes from "./routes/uploadRoutes.js";
+import connectDB from "./backend/config/db.js";
+import { notFound, errorHandler } from "./backend/middleware/errorMiddleware.js";
+import productRoutes from "./backend/routes/productRoutes.js";
+import userRoutes from "./backend/routes/userRoutes.js";
+import orderRoutes from "./backend/routes/orderRoutes.js";
+import uploadRoutes from "./backend/routes/uploadRoutes.js";
 import morgan from "morgan";
 
 dotenv.config();
