@@ -4,7 +4,9 @@
   "description": "Ecommerce MERN",
   "main": "server.js",
   "type": "module",
-  "proxy": "http://localhost:5000",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
