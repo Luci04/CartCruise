@@ -20,7 +20,7 @@ import {
   ORDER_DELIVERED_RESET,
 } from "../constants/orderConstants";
 
-import axios from "axios";
+import axios from "./api";
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {

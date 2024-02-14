@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../actions/api";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";

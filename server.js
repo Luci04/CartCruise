@@ -18,7 +18,10 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://illustrious-griffin-bfb170.netlify.app',
+  credentials: true // If you are using credentials in your requests
+}));
 
 // if (process.env.NODE_ENV === "Development") {
 // app.use(morgan("dev"));
